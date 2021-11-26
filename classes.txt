@@ -1,0 +1,21 @@
+public class savingsAccount
+{public String id;
+public String accountNum;
+public bigDecimal balance;
+
+public void amountToWithdraw(bigDecimal amount)
+{balance=balance-amount;
+} //withdraw function
+
+}//savings account class
+
+public class currentAccount extends savingsAccount
+{public bigDecimal overdraft;
+
+public void withdraw(bigDecimal amount)
+{if (amount <= balance + overdraft)
+balance = balance - amount
+else
+system.error.printlin("Insufficient funds for withdrawal")
+}//withdraw function 
+} //current account class
