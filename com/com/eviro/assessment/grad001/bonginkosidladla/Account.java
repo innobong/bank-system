@@ -11,28 +11,28 @@ import java.util.ArrayList;
  *
  * @author Admin
  */
-public class account {
+public class Account {
     private int id;
     private String accountNum;
-    private bigDecimal balance;
-    private bigDecimal overDraft;
+    private double balance;
+    private double overDraft;
 
-    public account(int id, String accountNum, bigDecimal balance, bigDecimal overDraft) {
+    public Account(int id, String accountNum, double balance, double overDraft) {
         this.id = id;
         this.accountNum = accountNum;
         this.balance = balance;
         this.overDraft = overDraft;
     }
 
-    public bigDecimal getOverDraft() {
+    public double getOverDraft() {
         return overDraft;
     }
 
-    public void setOverDraft(bigDecimal overDraft) {
+    public void setOverDraft(double overDraft) {
         this.overDraft = overDraft;
     }
 
-    public account(int id, String accountNum, bigDecimal balance) {
+    public Account(int id, String accountNum, double balance) {
         this.id = id;
         this.accountNum = accountNum;
         this.balance = balance;
@@ -46,40 +46,40 @@ public class account {
         this.id = id;
     }
 
-    public String getaccountNum() {
+    public String getAccountNum() {
         return accountNum;
     }
 
-    public void setaccountNum(String accountNum) {
+    public void setAccountNum(String accountNum) {
         this.accountNum = accountNum;
     }
 
-    public bigDecimal getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(bigDecimal balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
-    public account() {
+    public Account() {
     }
     
-    public bigDecimal checkaccount(String accountNum) throws accountNotFoundException{
+    public double checkAccount(String accountNum) throws AccountNotFoundException{
     
         boolean found = false;
         SystemDB data = new SystemDB();
-        ArrayList<account> acclist = data.accountsData();
+        ArrayList<Account> acclist = data.accountsData();
         
-        for(account acc:acclist){
-           if(acc.getaccountNum().equals(accountNum)) {
+        for(Account acc:acclist){
+           if(acc.getAccountNum().equals(accountNum)) {
                 found = true;
                 balance = acc.getBalance();
            }
         }
         
         if(!found){
-          throw new accountNotFoundException("account Number not found");
+          throw new AccountNotFoundException("Account Number not found");
         }
         return balance;
     }

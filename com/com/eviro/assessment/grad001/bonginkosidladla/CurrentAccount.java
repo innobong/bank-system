@@ -11,28 +11,28 @@ import java.util.ArrayList;
  *
  * @author Admin
  */
-public class CurrentbigDecimal implements bigDecimalService{
-  private bigDecimal balance;
+public class CurrentAccount implements AccountService{
+  private double balance;
   
-  // to withdraw from Current bigDecimal
+  // to withdraw from Current account
   @Override
-    public void withdraw(String bigDecimalNum, bigDecimal amountToWithdraw){
-        System.out.println("bigDecimal Type: Current");
-        System.out.println("bigDecimal Number: "+bigDecimalNum); 
+    public void withdraw(String accountNum, double amountToWithdraw){
+        System.out.println("Account Type: Current");
+        System.out.println("Account Number: "+accountNum); 
         
         try{
-            // creating an instance of bigDecimal          
-            bigDecimal accuntService = new bigDecimal();
+            // creating an instance of Account          
+            Account accuntService = new Account();
             // fetch initial balance from database
-            bigDecimal initialBalance = accuntService.checkbigDecimal(bigDecimalNum);
+            double initialBalance = accuntService.checkAccount(accountNum);
             System.out.println("Balance: R"+initialBalance); 
             // creating an instance of SystemDB 
             SystemDB data = new SystemDB();
-            bigDecimal overDraft = 0;
-            ArrayList<bigDecimal> acclist = data.bigDecimalsData();
-            // fetch overdraf for selected bigDecimal number
-            for(bigDecimal acc:acclist){        
-               if(acc.getbigDecimalNum().equals(bigDecimalNum)) {
+            double overDraft = 0;
+            ArrayList<Account> acclist = data.accountsData();
+            // fetch overdraf for selected account number
+            for(Account acc:acclist){        
+               if(acc.getAccountNum().equals(accountNum)) {
                 overDraft = acc.getOverDraft();
                 System.out.println("Overdraft:  R"+overDraft); 
                }
@@ -51,9 +51,9 @@ public class CurrentbigDecimal implements bigDecimalService{
               
            }else{
              // Throw exception if Withdrawal Amount is too large    
-             throw new bigDecimalNotFoundException("Withdrawal Amount too large");
+             throw new AccountNotFoundException("Withdrawal Amount too large");
             }
-        }catch(bigDecimalNotFoundException e){
+        }catch(AccountNotFoundException e){
             System.out.println(e.getMessage()); 
         }
         

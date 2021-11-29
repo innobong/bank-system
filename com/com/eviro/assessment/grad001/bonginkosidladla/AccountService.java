@@ -11,7 +11,7 @@ package com.eviro.assessment.grad001.bonginkosidladla;
  */
 // to withdraw from account
 public interface AccountService{
-    public void withdraw(String accountNum, bigDecimal amountToWithdraw);
+    public void withdraw(String accountNum, double amountToWithdraw);
 }
 
 

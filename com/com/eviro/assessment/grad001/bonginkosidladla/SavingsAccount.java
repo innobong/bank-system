@@ -10,21 +10,21 @@ package com.eviro.assessment.grad001.bonginkosidladla;
  *
  * @author Admin
  */
-public class SavingsbigDecimal implements bigDecimalService{
+public class SavingsAccount implements AccountService{
     
-    private bigDecimal balance;
+    private double balance;
 
-    // to withdraw from savings bigDecimal
+    // to withdraw from savings account
     @Override
-    public void withdraw(String bigDecimalNum, bigDecimal amountToWithdraw){
-        System.out.println("bigDecimal Type: Savings");
-        System.out.println("bigDecimal Number: "+bigDecimalNum); 
+    public void withdraw(String accountNum, double amountToWithdraw){
+        System.out.println("Account Type: Savings");
+        System.out.println("Account Number: "+accountNum); 
         
         try{
-            // creating an instance of bigDecimal         
-            bigDecimal accunt = new bigDecimal();
-            // Check if bigDecimal does exist
-            balance = accunt.checkbigDecimal(bigDecimalNum);
+            // creating an instance of Account         
+            Account accunt = new Account();
+            // Check if account does exist
+            balance = accunt.checkAccount(accountNum);
             System.out.println("Balance: R"+balance);
             // Check if Withdrawal Amount greater than balance
             if(balance>=amountToWithdraw){
@@ -37,14 +37,14 @@ public class SavingsbigDecimal implements bigDecimalService{
               
            }else{
              // Throw exception if Withdrawal Amount is too large    
-             throw new bigDecimalNotFoundException("Withdrawal Amount too large");
+             throw new AccountNotFoundException("Withdrawal Amount too large");
             }
-        }catch(bigDecimalNotFoundException e){
+        }catch(AccountNotFoundException e){
             System.out.println(e.getMessage()); 
         }
         
     }
 
-    public SavingsbigDecimal() {
+    public SavingsAccount() {
     }
 }
